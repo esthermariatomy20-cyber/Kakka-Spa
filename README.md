@@ -1,7 +1,6 @@
 # Kakka Spa 🐦
-
+# Team Lumo
 ## Basic Details
-**Team Name:Lumo
 
 ## Team Members
 - **Team Lead:** Dhiya Yohannan - MBCCET
@@ -71,31 +70,32 @@ Diagrams
 Caption: Workflow of the interactive experiment from choosing the crow to the final mirror test.
 
 For Hardware:
-Not Applicable.
-Project Demo
-Video
+### Schematic & Circuit
+
+![Circuit](Not Applicable)  
+No physical circuit is used because Kakka Spa is a software-based web application.
+
+![Schematic](Not Applicable)  
+The project does not require a hardware schematic. It is implemented using HTML, CSS and JavaScript.
+
+### Build Photos
+
+![Components](Not Applicable)  
+No physical components are used in this project.
+
+![Build](Not Applicable)  
+The project was developed digitally as a web application using HTML, CSS and JavaScript.
+
+![Final](screenshot-final.png)  
+Final Kakka Spa web application showing the completed interactive crow spa experiment and transformation.
+## Project Demo
+# Video
 [Add your demo video link here]
 Explanation: The video demonstrates the complete Kakka Spa experiment, including user interactions, bathing stages, animations and the final transformation result.
-Additional Demos
+# Additional Demos
 [Add any extra demo materials/links]
 Team Contributions
-[Name 1]: Website design, UI development and project concept
-[Name 2]: Interactive features, JavaScript functionality and testing
-[Name 3]: Documentation, presentation and project testing
+Dhiya Yohannan: Website design, UI development and project concept
+Esthermaria Tomy: Interactive features, JavaScript functionality and testing
+Dhiya & Esther: Documentation, presentation and project testing
 Made with ❤️ at TinkerHub Useless Projects
-Static Badge Static Badge
-Releases
-No releases published
-Deployments
-1
-(1)
-github-pages
-last week
-Packages
-No packages published
-Contributors
-2
-(2)
-Languages
-HTML
-100%
