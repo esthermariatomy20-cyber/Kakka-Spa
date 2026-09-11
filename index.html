@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>കാക്ക കുളിച്ചാൽ കൊക്ക് ആവില്ല! 🐦</title>
+<style>
+:root{
+  --cream:#fff8e8;--sky:#dff7ff;--blue:#65ccec;--yellow:#ffd85a;
+  --pink:#ffc4dc;--lav:#d9c8ff;--green:#c8efae;--ink:#252833;
+  --white:#fff;--shadow:7px 7px 0 var(--ink);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:"Trebuchet MS","Segoe UI",sans-serif;background:var(--cream);color:var(--ink)}
+button{font:inherit;border:0;cursor:pointer}
+.container{width:min(1120px,92%);margin:auto}
+.nav{position:sticky;top:0;z-index:100;background:#fffaf0ee;backdrop-filter:blur(12px);border-bottom:2px solid #25283318}
+.navin{min-height:68px;display:flex;align-items:center;justify-content:space-between}
+.logo{font-weight:1000;font-size:19px}
+.nav button{background:transparent;padding:9px 12px;font-weight:900;border-radius:12px}
+.nav button:hover{background:#fff}
+.hero{min-height:calc(100vh - 68px);display:grid;place-items:center;background:linear-gradient(135deg,var(--cream),var(--sky));overflow:hidden}
+.hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:45px;align-items:center;padding:65px 0}
+.badge{display:inline-block;background:#fff;border:3px solid var(--ink);border-radius:999px;padding:8px 14px;font-weight:1000;box-shadow:4px 4px 0 var(--ink)}
+h1{font-size:clamp(40px,6vw,72px);line-height:.98;letter-spacing:-3px;margin:20px 0}
+h1 span{color:#35a7d3}
+.hero p{font-size:18px;line-height:1.6;margin-bottom:24px}
+.actions{display:flex;gap:12px;flex-wrap:wrap}
+.primary,.secondary{padding:14px 21px;border-radius:16px;border:3px solid var(--ink);font-weight:1000;box-shadow:5px 5px 0 var(--ink);transition:.18s}
+.primary{background:var(--yellow)}.secondary{background:#fff}
+.primary:hover,.secondary:hover{transform:translate(-2px,-2px);box-shadow:7px 7px 0 var(--ink)}
+.scene{height:510px;position:relative;background:#bcecff;border:4px solid var(--ink);border-radius:38px;box-shadow:12px 12px 0 var(--ink);overflow:hidden}
+.sun{position:absolute;right:35px;top:35px;width:78px;height:78px;border:3px solid var(--ink);border-radius:50%;background:var(--yellow)}
+.ground{position:absolute;bottom:0;width:100%;height:95px;background:var(--green);border-top:4px solid var(--ink)}
+.tub{position:absolute;bottom:45px;left:50%;transform:translateX(-50%);width:280px;height:85px;border:4px solid var(--ink);background:#fff;border-radius:20px 20px 50px 50px;z-index:2}
+.tub:before{content:"";position:absolute;left:15px;right:15px;top:-12px;height:35px;border:3px solid var(--ink);border-radius:50%;background:#72d9f4}
+.shower{position:absolute;top:48px;left:50%;transform:translateX(-50%);z-index:12}
+.pipe{width:145px;height:18px;border:4px solid var(--ink);background:#eee;border-radius:20px}
+.head{position:absolute;right:-30px;top:18px;width:60px;height:20px;border:4px solid var(--ink);border-radius:50%;background:#ddd}
+.water{position:absolute;top:62px;left:50%;transform:translateX(-50%);width:100px;height:250px;opacity:0}
+.water.on{opacity:1}
+.drop{position:absolute;width:8px;height:19px;border:2px solid #238eb5;border-radius:50%;background:#55cef1;animation:fall .5s linear infinite}
+.drop:nth-child(1){left:5px}.drop:nth-child(2){left:22px;animation-delay:.12s}.drop:nth-child(3){left:40px;animation-delay:.25s}.drop:nth-child(4){left:58px;animation-delay:.08s}.drop:nth-child(5){left:78px;animation-delay:.2s}.drop:nth-child(6){left:91px;animation-delay:.34s}
+@keyframes fall{from{top:0}to{top:235px}}
+.crow{position:absolute;z-index:8;left:50%;bottom:105px;transform:translateX(-50%);width:220px;animation:bob 3s ease-in-out infinite}
+@keyframes bob{50%{transform:translateX(-50%) translateY(-7px) rotate(-1deg)}}
+.crow svg{width:100%;height:auto;filter:drop-shadow(0 7px 2px #17202a25)}
+.body{fill:#292e37;stroke:#20232a;stroke-width:5}.wing{fill:#3b414c;stroke:#20232a;stroke-width:5}.beak{fill:#ffad42;stroke:#20232a;stroke-width:5}.eye{fill:#fff;stroke:#20232a;stroke-width:4}.pupil{fill:#20232a}
+.crane-final{position:absolute;z-index:30;left:50%;bottom:78px;transform:translateX(-50%) scale(.25);opacity:0;pointer-events:none;transition:.8s}.crane-final.show{transform:translateX(-50%) scale(.72);opacity:1}.crane-final svg{width:240px;height:auto;display:block;filter:drop-shadow(0 7px 2px #17202a25)}.crane-body{fill:#fff;stroke:#20232a;stroke-width:5}.crane-wing{fill:#e9eef2;stroke:#20232a;stroke-width:5}.crane-neck{fill:#fff;stroke:#20232a;stroke-width:5}.crane-beak{fill:#ffad42;stroke:#20232a;stroke-width:5}.crane-eye{fill:#20232a}.crane-leg{stroke:#20232a;stroke-width:6;stroke-linecap:round;stroke-linejoin:round;fill:none}.crane-final svg{overflow:visible}
+
+.bubbles{position:absolute;inset:0;z-index:15;pointer-events:none;opacity:0}
+.bubbles.on{opacity:1}
+.bub{position:absolute;width:25px;height:25px;border:3px solid white;border-radius:50%;background:#ffffff55;animation:up 2.5s infinite}
+.bub:nth-child(1){left:20%;bottom:80px}.bub:nth-child(2){left:35%;bottom:100px;animation-delay:.5s}.bub:nth-child(3){left:58%;bottom:90px;animation-delay:1s}.bub:nth-child(4){left:75%;bottom:70px;animation-delay:.2s}
+@keyframes up{from{transform:translateY(0) scale(.5);opacity:0}30%{opacity:1}to{transform:translateY(-250px) scale(1);opacity:0}}
+.splash{position:absolute;z-index:16;left:50%;bottom:125px;transform:translateX(-50%);opacity:0}
+.splash.on{animation:sp .75s ease-out}
+.splash span{display:inline-block;width:13px;height:13px;background:#52cef0;border:2px solid #238eb5;border-radius:50%;margin:7px}
+@keyframes sp{0%{opacity:0;transform:translateX(-50%) scale(.3)}40%{opacity:1;transform:translateX(-50%) scale(1.2)}100%{opacity:0}}
+.section{padding:90px 0}.white{background:#fff}.heading{text-align:center;margin-bottom:40px}.heading h2{font-size:clamp(32px,5vw,52px);margin:12px 0}.heading p{opacity:.7;font-weight:700}
+.steps{display:grid;grid-template-columns:repeat(5,1fr);gap:15px}
+.step{padding:20px;border:3px solid var(--ink);border-radius:23px;background:var(--cream);box-shadow:6px 6px 0 var(--ink);cursor:pointer;transition:.2s}
+.step:nth-child(2){background:var(--sky)}.step:nth-child(3){background:#fff0aa}.step:nth-child(4){background:var(--lav)}.step:nth-child(5){background:var(--pink)}
+.step:hover{transform:translateY(-6px)}.num{font-weight:1000;font-size:13px}.icon{font-size:38px;margin:12px 0}.step h3{margin-bottom:7px}.step p{font-size:13px;line-height:1.5}
+.lab{background:linear-gradient(135deg,#e9f9ff,#f1eaff)}
+.card{background:#fff;border:4px solid var(--ink);border-radius:34px;box-shadow:11px 11px 0 var(--ink);overflow:hidden}
+.labhead{padding:20px 25px;border-bottom:3px solid var(--ink);display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font-weight:1000}
+.bar{width:150px;height:13px;border:3px solid var(--ink);border-radius:20px;overflow:hidden;display:inline-block;vertical-align:middle;margin-left:8px}.fill{height:100%;width:20%;background:var(--yellow);transition:.5s}
+.labgrid{display:grid;grid-template-columns:1.15fr .85fr}
+.stage{min-height:610px;background:#bcecff;position:relative;overflow:hidden}
+.panel{padding:27px;background:#fffdf7}.stage small{font-weight:1000;opacity:.6}.panel h2{font-size:36px;margin:8px 0}.panel>p{line-height:1.6;margin-bottom:20px}
+.toolgrid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:18px}.tool{padding:13px;border:3px solid var(--ink);border-radius:15px;background:#fff;font-weight:1000}.tool:hover{background:var(--yellow)}.tool.selected{background:var(--green)}
+.status{padding:16px;border:3px dashed var(--ink);border-radius:17px;background:#fff;margin-bottom:18px;font-weight:1000}
+.stat{display:flex;justify-content:space-between;align-items:center;margin:10px 0;font-size:13px;font-weight:1000}.statbar{width:55%;height:10px;background:#eee;border:2px solid var(--ink);border-radius:20px;overflow:hidden}.statbar i{display:block;height:100%;width:20%;background:var(--blue);transition:.5s}.crowbar i{width:100%;background:#343944}.cranebar i{width:0;background:var(--pink)}
+.next{width:100%}
+.soap-rack{margin-top:20px;padding-top:18px;border-top:3px solid #25283320}.soap-rack h3{margin-bottom:10px}.soaps{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.soapcard{position:relative;min-height:95px;border:3px solid var(--ink);border-radius:15px;background:#fff;padding:10px;text-align:center;transition:.18s;cursor:pointer;box-shadow:3px 3px 0 var(--ink)}
+.soapcard:hover{transform:translateY(-3px)}.soapcard.active{background:#fff0aa;outline:3px solid #ffbd38}
+.soapbar{width:65px;height:34px;margin:4px auto 7px;border:3px solid var(--ink);border-radius:12px;display:grid;place-items:center;font-size:9px;font-weight:1000}
+.dove{background:#eef5ff}.medimix{background:#d9f1cf}.pears{background:#ffd27e}
+.soapcard b{font-size:11px}.soapcard span{display:block;font-size:9px;opacity:.65;margin-top:2px}
+.soap-fly{position:absolute;z-index:20;left:50%;top:58%;transform:translate(-50%,-50%) scale(0);transition:.4s}.soap-fly.show{transform:translate(-50%,-50%) scale(1) rotate(-8deg)}
+.towel{position:absolute;z-index:19;left:calc(50% + 82px);top:365px;width:105px;height:58px;border:4px solid var(--ink);border-radius:15px;background:var(--pink);opacity:0;transform:translate(55px,0) rotate(10deg);transition:.35s;display:grid;place-items:center;font-weight:1000;box-shadow:4px 4px 0 var(--ink)}.towel.show{opacity:1;animation:wipeBody 1.4s ease-in-out 2 alternate}.towel:before{content:"";position:absolute;inset:7px;border:2px dashed #fff;border-radius:10px;opacity:.8}@keyframes wipeBody{0%{transform:translate(55px,0) rotate(10deg)}25%{transform:translate(20px,-12px) rotate(-8deg)}50%{transform:translate(-45px,4px) rotate(-15deg)}75%{transform:translate(-10px,15px) rotate(8deg)}100%{transform:translate(55px,0) rotate(10deg)}}
+.glasses{position:absolute;z-index:25;left:50%;top:320px;transform:translate(-50%,-50%) scale(0);transition:.4s;pointer-events:none}.glasses.show{transform:translate(-50%,-50%) scale(1)}.glass{display:inline-block;width:48px;height:25px;background:#242833;border:4px solid #111;border-radius:7px 7px 15px 15px}.bridge{display:inline-block;width:18px;border-top:5px solid #111;vertical-align:middle}
+.result{background:var(--cream)}.resultcard{max-width:850px;margin:auto;text-align:center;background:#fff;border:4px solid var(--ink);border-radius:34px;box-shadow:11px 11px 0 var(--ink);padding:40px 24px}
+.mirror{height:330px;margin:25px auto;max-width:600px;border:8px solid var(--ink);border-radius:30px;background:linear-gradient(#dff7ff,#fff);display:grid;place-items:center;overflow:hidden;position:relative}.mirror .crow{position:absolute;left:50%;top:50%;width:220px;transform:translate(-50%,-50%) scale(.3);opacity:0;animation:none;transition:.8s}.mirror.reveal .crow{transform:translate(-50%,-50%) scale(.85);opacity:1}.mirror .crane-final{left:50%;top:50%;bottom:auto;transform:translate(-50%,-50%) scale(.18)}.mirror .crane-final.show{transform:translate(-50%,-50%) scale(.62);opacity:1}
+.resultbox{display:none;animation:pop .6s}.resultbox.show{display:block}@keyframes pop{from{transform:scale(.7);opacity:0}to{transform:scale(1);opacity:1}}
+.failed{display:inline-block;padding:12px 18px;border:3px solid #e85a5a;border-radius:15px;background:#ffd8d8;font-weight:1000}.success{display:inline-block;padding:12px 18px;border:3px solid #54a85b;border-radius:15px;background:#dff6df;font-weight:1000}.big{font-size:clamp(27px,5vw,48px);font-weight:1000;margin:18px 0}.resultgrid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:20px 0}.resultgrid>div{border:3px solid var(--ink);border-radius:17px;padding:20px;background:var(--cream)}.result-bird{height:150px;display:grid;place-items:center;margin:8px auto}.result-bird svg{height:145px;width:auto;display:block}.result-after svg{height:155px}
+.modal{position:fixed;inset:0;background:#25283388;z-index:500;display:none;place-items:center;padding:18px;backdrop-filter:blur(5px)}.modal.show{display:grid}.modalbox{width:min(620px,100%);background:#fff;border:4px solid var(--ink);border-radius:28px;box-shadow:9px 9px 0 var(--ink);padding:27px;animation:pop .25s}.close{float:right;width:38px;height:38px;border:3px solid var(--ink);border-radius:50%;background:var(--pink);font-weight:1000}.demo{clear:both;margin:22px 0;padding:25px;border:3px dashed var(--ink);border-radius:18px;background:var(--cream);text-align:center;font-size:21px;font-weight:1000;line-height:1.5}
+.toast{position:fixed;z-index:800;bottom:20px;left:50%;transform:translate(-50%,100px);background:var(--ink);color:#fff;padding:13px 20px;border-radius:999px;font-weight:1000;transition:.3s}.toast.show{transform:translate(-50%,0)}
+footer{background:var(--ink);color:#fff;text-align:center;padding:32px}footer strong{color:var(--yellow)}
+@media(max-width:850px){.hero-grid,.labgrid{grid-template-columns:1fr}.steps{grid-template-columns:repeat(2,1fr)}.steps .step:last-child{grid-column:span 2}.scene{height:430px}.stage{min-height:480px}}
+@media(max-width:520px){.nav button{display:none}.hero-grid{padding:45px 0}h1{letter-spacing:-2px}.scene{border-radius:27px;box-shadow:7px 7px 0 var(--ink)}.crow{width:180px;bottom:100px}.tub{width:230px}.steps{grid-template-columns:1fr}.steps .step:last-child{grid-column:auto}.toolgrid,.soaps,.resultgrid{grid-template-columns:1fr}.panel{padding:20px}.stage{min-height:450px}}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="container navin">
+    <div class="logo">🐦 KAKKA SPA</div>
+    <div>
+      <button onclick="go('home')">Home</button>
+      <button onclick="go('how')">How it works</button>
+      <button onclick="go('lab')">Experiment</button>
+      <button onclick="go('result')">Result</button>
+    </div>
+  </div>
+</nav>
+
+<section class="hero" id="home">
+<div class="container hero-grid">
+  <div>
+    <span class="badge">🧪 100% unnecessary experiment</span>
+    <h1>കാക്ക കുളിച്ചാൽ... <span>കൊക്ക് ആവുമോ?</span> 👀</h1>
+    <p>വെള്ളം, soap, shampoo, luxury spa — എല്ലാം try ചെയ്ത് നോക്കാം. അവസാനം നമ്മുടെ cute കാക്ക എന്താകും? 😂</p>
+    <div class="actions">
+      <button class="primary" onclick="start()">🚿 Start Experiment</button>
+      <button class="secondary" onclick="openDemo(0)">📖 How It Works</button>
+    </div>
+  </div>
+
+  <div class="scene">
+    <div class="sun"></div>
+    <div class="shower"><div class="pipe"></div><div class="head"></div>
+      <div class="water on"><i class="drop"></i><i class="drop"></i><i class="drop"></i><i class="drop"></i><i class="drop"></i><i class="drop"></i></div>
+    </div>
+    <div class="crow">
+      <svg viewBox="0 0 240 260">
+        <ellipse class="body" cx="120" cy="150" rx="75" ry="85"/><circle class="body" cx="120" cy="75" r="65"/>
+        <path class="wing" d="M65 135Q10 125 20 190Q38 220 82 170Z"/><path class="wing" d="M175 135Q230 125 220 190Q202 220 158 170Z"/>
+        <path class="beak" d="M170 75L225 90L170 105Z"/><circle class="eye" cx="92" cy="65" r="20"/><circle class="eye" cx="145" cy="65" r="20"/>
+        <circle class="pupil" cx="97" cy="65" r="8"/><circle class="pupil" cx="150" cy="65" r="8"/>
+        <path d="M105 103Q120 115 137 102" fill="none" stroke="#20232a" stroke-width="5" stroke-linecap="round"/>
+        <path d="M90 225L80 245M90 240L75 240M150 225L160 245M150 240L166 240" stroke="#20232a" stroke-width="6" stroke-linecap="round"/>
+      </svg>
+    </div>
+    <div class="tub"></div><div class="ground"></div>
+  </div>
+</div>
+</section>
+
+<section class="section white" id="how">
+<div class="container">
+  <div class="heading"><span class="badge">🎮 CLICK EACH STEP</span><h2>How to become a very unnecessary scientist</h2><p>Instruction cards are interactive — click one for a mini demo.</p></div>
+  <div class="steps">
+    <div class="step" onclick="openDemo(1)"><div class="num">STEP 01</div><div class="icon">🐦</div><h3>Choose Crow</h3><p>Meet the test subject.</p></div>
+    <div class="step" onclick="openDemo(2)"><div class="num">STEP 02</div><div class="icon">🚿</div><h3>Water</h3><p>Let water fall on the crow.</p></div>
+    <div class="step" onclick="openDemo(3)"><div class="num">STEP 03</div><div class="icon">🧼</div><h3>Choose Soap</h3><p>Pick Dove, Medimix or Pears.</p></div>
+    <div class="step" onclick="openDemo(4)"><div class="num">STEP 04</div><div class="icon">🧴</div><h3>Shampoo</h3><p>Make the feathers fluffy.</p></div>
+    <div class="step" onclick="openDemo(5)"><div class="num">STEP 05</div><div class="icon">🪞</div><h3>Mirror</h3><p>Discover the final result.</p></div>
+  </div>
+</div>
+</section>
+
+<section class="section lab" id="lab">
+<div class="container">
+<div class="heading"><span class="badge">🧪 LIVE EXPERIMENT</span><h2>CROW TRANSFORMATION LAB</h2></div>
+<div class="card">
+  <div class="labhead"><span>🐦 SUBJECT: KAKKA #001</span><span>STAGE <b id="stageNo">1</b>/5 <span class="bar"><i class="fill" id="progress"></i></span></span></div>
+  <div class="labgrid">
+    <div class="stage" id="stage">
+      <div class="shower"><div class="pipe"></div><div class="head"></div>
+        <div class="water" id="water"><i class="drop"></i><i class="drop"></i><i class="drop"></i><i class="drop"></i><i class="drop"></i><i class="drop"></i></div>
+      </div>
+      <div class="crow" id="crow">
+        <svg viewBox="0 0 240 260">
+          <ellipse class="body" cx="120" cy="150" rx="75" ry="85"/><circle class="body" cx="120" cy="75" r="65"/>
+          <path class="wing" d="M65 135Q10 125 20 190Q38 220 82 170Z"/><path class="wing" d="M175 135Q230 125 220 190Q202 220 158 170Z"/>
+          <path class="beak" d="M170 75L225 90L170 105Z"/><circle class="eye" cx="92" cy="65" r="20"/><circle class="eye" cx="145" cy="65" r="20"/>
+          <circle class="pupil" cx="97" cy="65" r="8"/><circle class="pupil" cx="150" cy="65" r="8"/>
+          <path d="M105 103Q120 115 137 102" fill="none" stroke="#20232a" stroke-width="5" stroke-linecap="round"/>
+          <path d="M90 225L80 245M90 240L75 240M150 225L160 245M150 240L166 240" stroke="#20232a" stroke-width="6" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <div class="crane-final" id="labCrane" aria-label="Final crane">
+        <svg viewBox="0 0 240 330" role="img">
+          <ellipse class="crane-body" cx="120" cy="205" rx="72" ry="62"/>
+          <path class="crane-wing" d="M70 185Q20 165 30 225Q48 260 92 215Z"/>
+          <path class="crane-neck" d="M155 205Q175 155 165 105Q160 75 178 48Q192 28 184 12Q210 30 201 60Q190 90 194 125Q202 175 158 220Z"/>
+          <circle class="crane-body" cx="188" cy="42" r="27"/>
+          <path class="crane-beak" d="M207 38L238 46L207 53Z"/>
+          <circle class="crane-eye" cx="196" cy="34" r="4"/>
+          <path class="crane-leg" d="M92 255L82 318M145 255L155 318M82 318L68 318M82 318L88 306M155 318L169 318M155 318L149 306"/>
+        </svg>
+      </div>
+      <div class="soap-fly" id="soapFly"><div class="soapbar dove">DOVE</div></div>
+      <div class="towel" id="towel">🧻 TOWEL</div>
+      <div class="glasses" id="glasses"><span class="glass"></span><span class="bridge"></span><span class="glass"></span></div>
+      <div class="bubbles" id="bubbles"><i class="bub"></i><i class="bub"></i><i class="bub"></i><i class="bub"></i></div>
+      <div class="splash" id="splash"><span></span><span></span><span></span><span></span></div>
+      <div class="ground"></div>
+    </div>
+
+    <div class="panel">
+      <small id="stageLabel">STAGE 1 — WATER</small>
+      <h2 id="title">💧 WATER</h2>
+      <p id="desc">First, turn on the shower. The crow is currently dry and deeply suspicious.</p>
+
+      <div class="toolgrid" id="toolgrid">
+        <button class="tool" id="waterBtn" onclick="action('water')">🚿 Turn Shower ON</button>
+        <button class="tool" id="pressureBtn" onclick="action('pressure')">💦 Increase Water Pressure</button>
+        <button class="tool" id="soapBtn" onclick="action('soap')">🧼 Choose Soap</button>
+        <button class="tool" id="rinseBtn" onclick="action('rinse')">🚿 Rinse Soap</button>
+        <button class="tool" id="shampooBtn" onclick="action('shampoo')">🧴 Choose Shampoo</button>
+        <button class="tool" id="rinseShampooBtn" onclick="action('rinseShampoo')">🚿 Rinse Shampoo</button>
+        <button class="tool" id="fluffBtn" onclick="action('fluff')">🪶 Fluff Feathers</button>
+        <button class="tool" id="polishBtn" onclick="action('polish')">✨ Feather Polish</button>
+        <button class="tool" id="styleBtn" onclick="action('style')">😎 Luxury Styling</button>
+        <button class="tool" id="spaBtn" onclick="action('spa')">🛁 Spa Finish</button>
+      </div>
+
+      <div class="status" id="status">Still a crow 🐦</div>
+
+      <div class="stat">Cleanliness <span class="statbar"><i id="clean"></i></span></div>
+      <div class="stat">Crow-ness <span class="statbar crowbar"><i></i></span></div>
+      <div class="stat">Crane-ness <span class="statbar cranebar"><i id="crane"></i></span></div>
+
+      <div class="soap-rack" id="choiceRack">
+        <h3 id="choiceTitle">🧼 Which soap should our crow use?</h3>
+        <div class="soaps" id="choiceOptions">
+          <button class="soapcard" onclick="chooseSoap('Dove','dove')"><div class="soapbar dove">DOVE</div><b>Dove</b></button>
+          <button class="soapcard" onclick="chooseSoap('Santoor','pears')"><div class="soapbar pears">SANTOOR</div><b>Santoor</b></button>
+          <button class="soapcard" onclick="chooseSoap('Lux','medimix')"><div class="soapbar medimix">LUX</div><b>Lux</b></button>
+          <button class="soapcard" onclick="chooseSoap('Pears','pears')"><div class="soapbar pears">PEARS</div><b>Pears</b></button>
+        </div>
+      </div>
+
+      <button class="primary next" onclick="next()" id="next">Continue →</button>
+    </div>
+  </div>
+</div>
+</div>
+</section>
+
+<section class="section result" id="result">
+<div class="container">
+<div class="resultcard">
+  <span class="badge">🪞 FINAL MIRROR TEST</span>
+  <h2 class="big">WHAT DID WE CREATE? 👀</h2>
+  <p>After water + soap + shampoo + luxury spa...</p>
+  <div class="mirror" id="mirror">
+    <div class="crow">
+      <svg viewBox="0 0 240 260">
+        <ellipse class="body" cx="120" cy="150" rx="75" ry="85"/><circle class="body" cx="120" cy="75" r="65"/>
+        <path class="wing" d="M65 135Q10 125 20 190Q38 220 82 170Z"/><path class="wing" d="M175 135Q230 125 220 190Q202 220 158 170Z"/>
+        <path class="beak" d="M170 75L225 90L170 105Z"/><circle class="eye" cx="92" cy="65" r="20"/><circle class="eye" cx="145" cy="65" r="20"/>
+        <circle class="pupil" cx="97" cy="65" r="8"/><circle class="pupil" cx="150" cy="65" r="8"/>
+        <path d="M105 103Q120 115 137 102" fill="none" stroke="#20232a" stroke-width="5" stroke-linecap="round"/>
+        <path d="M90 225L80 245M90 240L75 240M150 225L160 245M150 240L166 240" stroke="#20232a" stroke-width="6" stroke-linecap="round"/>
+      </svg>
+    </div>
+    <div class="crane-final" id="mirrorCrane" aria-label="Final crane">
+      <svg viewBox="0 0 240 330" role="img">
+        <ellipse class="crane-body" cx="120" cy="205" rx="72" ry="62"/>
+        <path class="crane-wing" d="M70 185Q20 165 30 225Q48 260 92 215Z"/>
+        <path class="crane-neck" d="M155 205Q175 155 165 105Q160 75 178 48Q192 28 184 12Q210 30 201 60Q190 90 194 125Q202 175 158 220Z"/>
+        <circle class="crane-body" cx="188" cy="42" r="27"/>
+        <path class="crane-beak" d="M207 38L238 46L207 53Z"/>
+        <circle class="crane-eye" cx="196" cy="34" r="4"/>
+        <path class="crane-leg" d="M92 255L82 318M145 255L155 318M82 318L68 318M82 318L88 306M155 318L169 318M155 318L149 306"/>
+      </svg>
+    </div>
+  </div>
+  <button class="primary" id="reveal" onclick="reveal()">🪞 REVEAL THE RESULT</button>
+  <div class="resultbox" id="resultbox">
+    <div class="success">✅ CROW → CRANE : SUCCESS</div>
+    <div class="big">കാക്ക കൊക്കായി! 🐦➡️🦢✨</div>
+    <div class="resultgrid">
+      <div>BEFORE<br><div class="result-bird result-before">
+        <svg viewBox="0 0 240 260" aria-label="Black crow">
+          <ellipse class="body" cx="120" cy="150" rx="75" ry="85"/><circle class="body" cx="120" cy="75" r="65"/>
+          <path class="wing" d="M65 135Q10 125 20 190Q38 220 82 170Z"/><path class="wing" d="M175 135Q230 125 220 190Q202 220 158 170Z"/>
+          <path class="beak" d="M170 75L225 90L170 105Z"/><circle class="eye" cx="92" cy="65" r="20"/><circle class="eye" cx="145" cy="65" r="20"/>
+          <circle class="pupil" cx="97" cy="65" r="8"/><circle class="pupil" cx="150" cy="65" r="8"/>
+          <path d="M105 103Q120 115 137 102" fill="none" stroke="#20232a" stroke-width="5" stroke-linecap="round"/>
+          <path d="M90 225L80 245M90 240L75 240M150 225L160 245M150 240L166 240" stroke="#20232a" stroke-width="6" stroke-linecap="round"/>
+        </svg></div><br><b>Crow</b></div>
+      <div>AFTER<br><div class="result-bird result-after">
+        <svg viewBox="0 0 240 330" aria-label="Crane">
+          <ellipse class="crane-body" cx="120" cy="205" rx="72" ry="62"/>
+          <path class="crane-wing" d="M70 185Q20 165 30 225Q48 260 92 215Z"/>
+          <path class="crane-neck" d="M155 205Q175 155 165 105Q160 75 178 48Q192 28 184 12Q210 30 201 60Q190 90 194 125Q202 175 158 220Z"/>
+          <circle class="crane-body" cx="188" cy="42" r="27"/>
+          <path class="crane-beak" d="M207 38L238 46L207 53Z"/><circle class="crane-eye" cx="196" cy="34" r="4"/>
+          <path class="crane-leg" d="M92 255L82 318M145 255L155 318M82 318L68 318M82 318L88 306M155 318L169 318M155 318L149 306"/>
+        </svg></div><br><b>Crane</b></div>
+    </div>
+    <p><b>Cleaning: 100%</b> · <b>Species change: 100%</b></p>
+    <br><button class="secondary" onclick="restart()">🔄 Try Again</button>
+  </div>
+</div>
+</div>
+</section>
+
+<div class="modal" id="modal"><div class="modalbox">
+<button class="close" onclick="closeDemo()">×</button>
+<span class="badge">📖 MINI DEMO</span><h2 id="demoTitle" style="margin-top:14px">How it works</h2>
+<div class="demo" id="demoText"></div>
+<button class="primary" onclick="closeDemo();start()">GOT IT! 😎</button>
+</div></div>
+<div class="toast" id="toast"></div>
+<footer>Made with 🐦 + 💦 + 😂<br><strong>Experiment complete — the crow has transformed into a crane! 🐦➡️🦢</strong></footer>
+
+<script>
+let stageNo=1, soapName="Dove", soapClass="dove";
+const data=[
+ {t:"💧 WATER",label:"STAGE 1 — WATER",d:"First, turn on the shower. The crow is currently dry and deeply suspicious.",c:0,s:"Current Status: Still a Crow 🐦"},
+ {t:"🧼 SOAP",label:"STAGE 2 — SOAP",d:"Now choose a soap. Apparently scientific experiments need brand selection too.",c:45,s:"Dove worked perfectly. Crow is now 45% cleaner and 0% more crane."},
+ {t:"🧴 SHAMPOO",label:"STAGE 3 — SHAMPOO",d:"Time for premium feather care. Select the shampoo first.",c:45,s:"Select the shampoo before touching the crow's premium feathers."},
+ {t:"😎 LUXURY SPA",label:"STAGE 4 — LUXURY SPA",d:"The experiment has now become unnecessarily expensive.",c:84,s:"Feather polish applied. Shine level becoming financially irresponsible."},
+ {t:"🪞 MIRROR TEST",label:"STAGE 5 — MIRROR TEST",d:"Final scientific test. Let the crow inspect itself in the mirror.",c:100,s:"Final result: the crow has transformed into a crane! 🐦➡️🦢"}
+];
+
+function go(id){document.getElementById(id).scrollIntoView({behavior:"smooth"})}
+function start(){go("lab");}
+function setTools(ids){
+ document.querySelectorAll("#toolgrid .tool").forEach(x=>x.style.display="none");
+ ids.forEach(id=>{const el=document.getElementById(id);if(el)el.style.display="block";});
+}
+function update(){
+ const x=data[stageNo-1];
+ document.getElementById("stageNo").textContent=stageNo;
+ document.getElementById("progress").style.width=(stageNo*20)+"%";
+ document.getElementById("stageLabel").textContent=x.label;
+ document.getElementById("title").textContent=x.t;
+ document.getElementById("desc").textContent=x.d;
+ document.getElementById("status").textContent=x.s;
+ document.getElementById("clean").style.width=x.c+"%";
+ document.getElementById("next").textContent=stageNo===5?"🪞 Go To Mirror":"Next Stage →";
+
+ const rack=document.getElementById("choiceRack");
+ const title=document.getElementById("choiceTitle");
+ const options=document.getElementById("choiceOptions");
+
+ if(stageNo===2){
+  rack.style.display="block";
+  title.textContent="🧼 Which soap should our crow use?";
+  options.innerHTML=
+   '<button class="soapcard" onclick="chooseSoap(\'Dove\',\'dove\')"><div class="soapbar dove">DOVE</div><b>Dove</b></button>'+
+   '<button class="soapcard" onclick="chooseSoap(\'Santoor\',\'pears\')"><div class="soapbar pears">SANTOOR</div><b>Santoor</b></button>'+
+   '<button class="soapcard" onclick="chooseSoap(\'Lux\',\'medimix\')"><div class="soapbar medimix">LUX</div><b>Lux</b></button>'+
+   '<button class="soapcard" onclick="chooseSoap(\'Pears\',\'pears\')"><div class="soapbar pears">PEARS</div><b>Pears</b></button>';
+  setTools(["soapBtn","rinseBtn"]);
+ }else if(stageNo===3){
+  rack.style.display="block";
+  title.textContent="🧴 Which shampoo does this crow deserve?";
+  options.innerHTML=
+   '<button class="soapcard" onclick="chooseSoap(\'Dove\',\'dove\')"><div class="soapbar dove">DOVE</div><b>Dove</b></button>'+
+   '<button class="soapcard" onclick="chooseSoap(\'Sunsilk\',\'pears\')"><div class="soapbar pears">SUNSILK</div><b>Sunsilk</b></button>'+
+   '<button class="soapcard" onclick="chooseSoap(\'Head & Shoulders\',\'medimix\')"><div class="soapbar medimix">HEAD &amp; SHOULDERS</div><b>Head &amp; Shoulders</b></button>'+
+   '<button class="soapcard" onclick="chooseSoap(\'Clinic Plus\',\'medimix\')"><div class="soapbar medimix">CLINIC PLUS</div><b>Clinic Plus</b></button>';
+  setTools(["shampooBtn","rinseShampooBtn","fluffBtn"]);
+ }else if(stageNo===4){
+  rack.style.display="none";
+  setTools(["polishBtn","styleBtn","spaBtn"]);
+ }else if(stageNo===1){
+  rack.style.display="none";
+  setTools(["waterBtn","pressureBtn"]);
+ }else{
+  rack.style.display="none";
+  setTools([]);
+ }
+}
+function action(type){
+ const w=document.getElementById("water"),b=document.getElementById("bubbles"),c=document.getElementById("crow"),sp=document.getElementById("splash"),tw=document.getElementById("towel"),gl=document.getElementById("glasses"),sf=document.getElementById("soapFly");
+ // Every effect starts OFF. It appears only after its own button is clicked.
+ if(type==="water"){w.classList.add("on");sp.classList.remove("on");void sp.offsetWidth;sp.classList.add("on");toast("🚿 Shower ON! Water is falling on the crow!");}
+ if(type==="pressure"){w.classList.add("on");sp.classList.remove("on");void sp.offsetWidth;sp.classList.add("on");toast("💦 Water pressure increased!");}
+ if(type==="soap"){w.classList.remove("on");b.classList.add("on");sf.classList.add("show");sf.querySelector(".soapbar").className="soapbar "+soapClass;sf.querySelector(".soapbar").textContent=soapName.toUpperCase();toast("🧼 "+soapName+" selected! Soap is applied to the crow.");}
+ if(type==="rinse"){w.classList.add("on");b.classList.remove("on");sf.classList.remove("show");toast("🚿 Soap rinsed away!");}
+ if(type==="shampoo"){w.classList.remove("on");b.classList.add("on");sf.classList.add("show");sf.querySelector(".soapbar").className="soapbar "+soapClass;sf.querySelector(".soapbar").textContent=soapName.toUpperCase();toast("🧴 Shampoo applied to the crow!");}
+ if(type==="rinseShampoo"){w.classList.add("on");b.classList.remove("on");sf.classList.remove("show");toast("🚿 Shampoo rinsed away!");}
+ if(type==="fluff"){c.style.transform="translateX(-50%) scale(1.08)";toast("🪶 Feathers fluffed! Still a crow. 😂");}
+ if(type==="polish"){c.style.transform="translateX(-50%) scale(1.08)";toast("✨ Feather polish applied!");}
+ if(type==="style"){c.style.transform="translateX(-50%) scale(1.08)";gl.classList.add("show");toast("😎 Luxury styling complete!");}
+ if(type==="spa"){w.classList.add("on");b.classList.add("on");c.style.transform="translateX(-50%) scale(1.08)";tw.classList.add("show");gl.classList.add("show");toast("🛁 Spa finish complete!");}
+}
+
+function chooseSoap(name,cls){
+ soapName=name;soapClass=cls;
+ document.querySelectorAll(".soapcard").forEach(x=>x.classList.remove("active"));
+ if(event&&event.currentTarget)event.currentTarget.classList.add("active");
+ action(stageNo===2?"soap":"shampoo");
+}
+function next(){
+ if(stageNo<5){stageNo++;reset();update();if(stageNo===5){document.getElementById("labCrane").classList.add("show");document.getElementById("crow").style.opacity="0";}}
+ else{go("result");setTimeout(reveal,500);}
+}
+function reset(){
+ document.getElementById("water").classList.remove("on");
+ document.getElementById("bubbles").classList.remove("on");
+ document.getElementById("towel").classList.remove("show");
+ document.getElementById("glasses").classList.remove("show");
+ document.getElementById("soapFly").classList.remove("show");
+ document.getElementById("crow").style.transform="";
+ document.getElementById("crow").classList.remove("water-colored");document.getElementById("crow").style.opacity="1";document.getElementById("labCrane").classList.remove("show");
+}
+
+function reveal(){
+ document.getElementById("mirror").classList.add("reveal");
+ document.querySelector("#mirror .crow").style.opacity="0";document.getElementById("mirrorCrane").classList.add("show");document.getElementById("reveal").style.display="none";
+ setTimeout(()=>{document.getElementById("resultbox").classList.add("show");toast("🎉 Transformation complete: Crow → Crane!")},800)
+}
+function restart(){
+ stageNo=1;update();reset();document.getElementById("mirror").classList.remove("reveal");document.querySelector("#mirror .crow").style.opacity="1";document.getElementById("mirrorCrane").classList.remove("show");document.getElementById("reveal").style.display="inline-block";document.getElementById("resultbox").classList.remove("show");start()
+}
+function openDemo(n){
+ const titles=["How it works","🐦 Choose Crow","🚿 Turn On Water","🧼 Choose Soap","🧴 Shampoo","🪞 Mirror"];
+ const texts=["Click the steps, then use the bath controls. The goal is simple: clean the crow without changing its species. 😂","Meet our cute test subject. Status: confused but cooperative. 🐦","Water falls from the shower and splashes around the crow. 💦","Choose a soap, then rinse it away. Bubbles appear only after the soap is selected. 🫧","Choose shampoo, rinse it, then fluff the feathers. Still 0% crane. 😂","The mirror reveals the final result: കാക്ക കൊക്കായി! 🐦➡️🦢"];
+ document.getElementById("demoTitle").textContent=titles[n]||titles[0];
+ document.getElementById("demoText").innerHTML=texts[n]||texts[0];
+ document.getElementById("modal").classList.add("show")
+}
+function closeDemo(){document.getElementById("modal").classList.remove("show")}
+function toast(msg){let t=document.getElementById("toast");t.textContent=msg;t.classList.add("show");clearTimeout(window.tt);window.tt=setTimeout(()=>t.classList.remove("show"),2200)}
+update();
+</script>
+</body>
+</html>
