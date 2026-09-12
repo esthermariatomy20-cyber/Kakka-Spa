@@ -63,7 +63,7 @@ Screenshots (Add at least 3)
 Caption: Kakka Spa homepage showing the interactive crow, shower scene and experiment controls.
 https://github.com/esthermariatomy20-cyber/Kakka-Spa/commit/57552927463da914ebb6d0a85db87a8a632f77ed
 Caption: Crow Transformation Lab where users interact with water, soap, shampoo and spa controls.
-�
+https://github.com/esthermariatomy20-cyber/Kakka-Spa/commit/57552927463da914ebb6d0a85db87a8a632f77ed
 Caption: Final Mirror Test revealing the humorous crow-to-crane transformation.
 Diagrams
 �
