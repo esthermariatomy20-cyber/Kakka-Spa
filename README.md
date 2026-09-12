@@ -86,7 +86,7 @@ No physical components are used in this project.
 ![Build](Not Applicable)  
 The project was developed digitally as a web application using HTML, CSS and JavaScript.
 
-![Final](screenshot-final.png)  
+![Final](https://github.com/esthermariatomy20-cyber/Kakka-Spa/commit/5ff82776512a161b79cd4dd352417793e982174d)  
 Final Kakka Spa web application showing the completed interactive crow spa experiment and transformation.
 ## Project Demo
 # Video
