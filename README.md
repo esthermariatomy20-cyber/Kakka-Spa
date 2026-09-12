@@ -66,7 +66,7 @@ Caption: Crow Transformation Lab where users interact with water, soap, shampoo 
 (https://github.com/esthermariatomy20-cyber/Kakka-Spa/commit/57552927463da914ebb6d0a85db87a8a632f77ed)
 Caption: Final Mirror Test revealing the humorous crow-to-crane transformation.
 Diagrams
-https://github.com/esthermariatomy20-cyber/Kakka-Spa/commit/57552927463da914ebb6d0a85db87a8a632f77ed)
+(https://github.com/esthermariatomy20-cyber/Kakka-Spa/commit/5ff82776512a161b79cd4dd352417793e982174d)
 Caption: Workflow of the interactive experiment from choosing the crow to the final mirror test.
 
 For Hardware:
