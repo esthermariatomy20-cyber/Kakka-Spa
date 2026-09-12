@@ -90,10 +90,9 @@ The project was developed digitally as a web application using HTML, CSS and Jav
 Final Kakka Spa web application showing the completed interactive crow spa experiment and transformation.
 ## Project Demo
 # Video
-[Add your demo video link here]
+(https://github.com/esthermariatomy20-cyber/Kakka-Spa/commit/8a68a0afed74b4c0e51bc3e2f597ce48c1213128)
 Explanation: The video demonstrates the complete Kakka Spa experiment, including user interactions, bathing stages, animations and the final transformation result.
-# Additional Demos
-[Add any extra demo materials/links]
+
 Team Contributions
 Dhiya Yohannan: Website design, UI development and project concept
 Esthermaria Tomy: Interactive features, JavaScript functionality and testing
