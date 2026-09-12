@@ -59,7 +59,7 @@ Open index.html in any modern web browser.
 ### Project Documentation 
 For Software:
 Screenshots (Add at least 3)
-
+pic 1.png
 Caption: Kakka Spa homepage showing the interactive crow, shower scene and experiment controls.
 �
 Caption: Crow Transformation Lab where users interact with water, soap, shampoo and spa controls.
